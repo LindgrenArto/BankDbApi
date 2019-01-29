@@ -34,15 +34,15 @@ namespace BankDbApi.Repositories
 
            //Mitä tähän??
 
-           return _context.Account.ToList();
+           return null;
 
        }
-
+        //By id
        public Account Read(int id)
        {
            return null;
        }
-
+        // Update
        public Account Update(int id, Account account)
        {
            _context.Update(account);
@@ -50,6 +50,7 @@ namespace BankDbApi.Repositories
            return account;
        }
 
+       //Delete
        public void Delete(int id)
        {
            var person = Read(id);
