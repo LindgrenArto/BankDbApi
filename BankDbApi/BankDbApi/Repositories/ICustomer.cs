@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace BankDbApi.Models.Repositories
 {
-    interface ICustomer
+    public interface ICustomer
     {
+        Customer Create(Customer customer);
+        List<Customer> Read();
+        Customer Read(int id);
+        Customer Update(int id, Customer customer);
+        void Delete(int id);
     }
 }

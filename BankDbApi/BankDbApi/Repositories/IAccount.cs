@@ -7,5 +7,10 @@ namespace BankDbApi.Models.Repositories
 {
     public interface IAccount
     {
+        Account Create(Account account);
+        List<Bank> Read();
+        Account Read(int id);
+        Account Update(int id, Bank bank);
+        void Delete(int id);
     }
 }
