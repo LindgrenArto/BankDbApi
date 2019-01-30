@@ -7,9 +7,22 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankDbApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/customers")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
+        private readonly ICustomer _customer;
+
+        public CustomersController(ICustomer customer)
+        {
+            _customer = customer;
+        }
+
+        // POST api/customers
+        [HttpPost]
+        public ActionResult<Customer> Post(Customer customer)
+        {
+            return _customer.Create(customer);
+        }
     }
 }
