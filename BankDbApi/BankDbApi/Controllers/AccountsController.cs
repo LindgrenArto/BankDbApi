@@ -11,18 +11,18 @@ namespace BankDbApi.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
-        private readonly IAccount _account;
+        private readonly IAccountService _accountService;
 
-        public AccountsController(IAccount account)
+        public AccountsController(IAccountService accountService)
         {
-            _account = account;
+            _accountService = accountService;
         }
 
         // DELETE api/accounts/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            _account.Delete(id);
+            _accountService.Delete(id);
             return new NoContentResult();
         }
     }

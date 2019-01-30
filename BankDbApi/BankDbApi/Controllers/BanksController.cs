@@ -11,11 +11,11 @@ namespace BankDbApi.Controllers
     [ApiController]
     public class BanksController : ControllerBase
     {
-        private readonly IBank _bank;
+        private readonly IBankService _bankService;
 
-        public BanksController(IBank bank)
+        public BanksController(IBankService bankService)
         {
-            _bank = bank;
+            _bankService = bankService;
         }
 
         // POST api/banks
@@ -29,14 +29,14 @@ namespace BankDbApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<Bank> Put(int id, Bank bank)
         {
-            return _bank.Update(bank);
+            return _bankService.Update(bank);
         }
 
         // DELETE api/banks/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            _bank.Delete(id);
+            _bankService.Delete(id);
             return new NoContentResult();
         }
     }

@@ -11,32 +11,32 @@ namespace BankDbApi.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private readonly ICustomer _customer;
+        private readonly ICustomerService _customerService;
 
-        public CustomersController(ICustomer customer)
+        public CustomersController(ICustomerService customerService)
         {
-            _customer = customer;
+            _customerService = customerService;
         }
 
         // POST api/customers
         [HttpPost]
         public ActionResult<Customer> Post(Customer customer)
         {
-            return _customer.Create(customer);
+            return _customerService.Create(customer);
         }
 
         // PUT api/customers/5
         [HttpPut("{id}")]
         public ActionResult<Customer> Put(int id, Customer customer)
         {
-            return _customer.Update(customer);
+            return _customerService.Update(customer);
         }
 
         // DELETE api/customers/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            _customer.Delete(id);
+            _customerService.Delete(id);
             return new NoContentResult();
         }
     }
