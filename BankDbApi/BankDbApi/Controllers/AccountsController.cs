@@ -7,9 +7,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankDbApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/accounts")]
     [ApiController]
     public class AccountsController : ControllerBase
     {
+        private readonly IAccount _account;
+
+        public AccountsController(IAccount account)
+        {
+            _account = account;
+        }
+
+        // DELETE api/accounts/5
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            _account.Delete(id);
+            return new NoContentResult();
+        }
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankDbApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/banks")]
     [ApiController]
     public class BanksController : ControllerBase
     {
