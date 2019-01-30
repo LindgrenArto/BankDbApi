@@ -24,5 +24,20 @@ namespace BankDbApi.Controllers
         {
             return _customer.Create(customer);
         }
+
+        // PUT api/customers/5
+        [HttpPut("{id}")]
+        public ActionResult<Customer> Put(int id, Customer customer)
+        {
+            return _customer.Update(customer);
+        }
+
+        // DELETE api/customers/5
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            _customer.Delete(id);
+            return new NoContentResult();
+        }
     }
 }
