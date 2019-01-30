@@ -29,7 +29,7 @@ namespace BankDbApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<Customer> Put(int id, Customer customer)
         {
-            return _customerService.Update(customer);
+            return _customerService.Update(id, customer);
         }
 
         // DELETE api/customers/5
