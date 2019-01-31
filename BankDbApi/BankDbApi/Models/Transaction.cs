@@ -12,7 +12,7 @@ namespace BankDbApi.Models
         public string IBAN { get; set; }
         [Column(TypeName = "decimal(18, 0)")]
         public decimal? Amount { get; set; }
-        [Column(TypeName = "date")]
+        [Column(TypeName = "datetime")]
         public DateTime? TimeStamp { get; set; }
 
         [ForeignKey("IBAN")]

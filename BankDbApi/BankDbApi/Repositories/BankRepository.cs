@@ -28,12 +28,12 @@ namespace BankDbApi.Repositories
         public List<Bank> Read()
         {
             // mitä tähän?
-            return _context.Bank.AsNoTracking().Include(p => p.Customer).ToList();
+            return _context.Bank.AsNoTracking().Include(c => c.Customer).ToList();
         }
 
         public Bank Read(int id)
         {
-            return _context.Bank.AsNoTracking().FirstOrDefault(p => p.Id == id);
+            return _context.Bank.AsNoTracking().Include(c=>c.Customer).FirstOrDefault(p => p.Id == id);
 
         }
 

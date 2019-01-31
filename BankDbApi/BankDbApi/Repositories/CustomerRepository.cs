@@ -27,14 +27,14 @@ namespace BankDbApi.Repositories
         //list
         public List<Customer> Read()
         {
-            return _context.Customer.AsNoTracking().Include(p => p.Account).ToList();
+            return _context.Customer.AsNoTracking().Include(a => a.Account).ToList();
 
 
         }
         //by id
         public Customer Read(int id)
         {
-            return _context.Customer.AsNoTracking().Include("Account").FirstOrDefault(p => p.Id == id);
+            return _context.Customer.AsNoTracking().Include(a=> a.Account).FirstOrDefault(p => p.Id == id);
         }
 
         public Customer Update(int id, Customer customer)
