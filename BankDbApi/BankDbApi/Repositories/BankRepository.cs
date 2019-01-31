@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using BankDbApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankDbApi.Repositories
 {
-    public class Bank: IBank
+    public class BankRepository: IBankRepository
     {
         private readonly BankdbContext _context;
 
-        public Bank(BankdbContext context)
+        public BankRepository (BankdbContext context)
         {
             _context = context;
         }
@@ -26,13 +28,12 @@ namespace BankDbApi.Repositories
         public List<Bank> Read()
         {
             // mitä tähän?
-            return null;
+            return _context.Bank.AsNoTracking().Include(p => p.Customer).ToList();
         }
 
         public Bank Read(int id)
         {
-
-            return null;
+            return _context.Bank.AsNoTracking().FirstOrDefault(p => p.Id == id);
 
         }
 
@@ -45,8 +46,8 @@ namespace BankDbApi.Repositories
 
         public void Delete(int id)
         {
-            
-            _context.Account.Remove(id);// ?????
+            var bank = Read(id);
+            _context.Bank.Remove(bank);
             _context.SaveChanges();
             
         }

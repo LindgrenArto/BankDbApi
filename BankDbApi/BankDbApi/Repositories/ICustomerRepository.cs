@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BankDbApi.Models;
 
 namespace BankDbApi.Repositories
 {
-    public interface ICustomer
+    public interface ICustomerRepository
     {
         Customer Create(Customer customer);
         List<Customer> Read();

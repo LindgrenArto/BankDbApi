@@ -4,15 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using BankDbApi.Models;
-using BankDbApi.Models.Repositories;
+using BankDbApi.Repositories;
+using Remotion.Linq.Clauses;
 
 namespace BankDbApi.Repositories
 {
-    public class Account: IAccount
+    public class AccountRepository: IAccountRepository
     {
         private readonly BankdbContext _context;
 
-        public Account(BankdbContext context)
+        public AccountRepository(BankdbContext context)
         {
             _context = context;
         }
@@ -26,24 +27,22 @@ namespace BankDbApi.Repositories
             return account;
         }
 
-       //printing list
+       //printing list , not working
 
 
        public List<Account> Read()
        {
 
-           //Mitä tähän??
-
-           return null;
+           return _context.Account.AsNoTracking().Include(p=>p.Transaction).ToList();
 
        }
-        //By id
-       public Account Read(int id)
+        //By id, not working
+       public Account Read(string IBAN)
        {
-           return null;
+           return _context.Account.AsNoTracking().Include("Transaction").FirstOrDefault(p => p.IBAN == IBAN);
        }
         // Update
-       public Account Update(int id, Account account)
+       public Account Update(string IBAN, Account account)
        {
            _context.Update(account);
            _context.SaveChanges();
@@ -51,10 +50,10 @@ namespace BankDbApi.Repositories
        }
 
        //Delete
-       public void Delete(int id)
+       public void Delete(string IBAN)
        {
-           var person = Read(id);
-           _context.Account.Remove(account);
+           var account = Read(IBAN);
+           _context.Account.Remove(account); // ??????
            _context.SaveChanges();
            return;
        }

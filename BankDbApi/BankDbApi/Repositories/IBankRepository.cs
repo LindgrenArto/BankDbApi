@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-namespace BankDbApi.Models.Repositories
+using BankDbApi.Models;
+namespace BankDbApi.Repositories
 {
-    public interface IBank
+    public interface IBankRepository
     {
         Bank Create(Bank bank);
         List<Bank> Read();
