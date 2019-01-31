@@ -18,6 +18,13 @@ namespace BankDbApi.Controllers
             _accountService = accountService;
         }
 
+        // GET api/accounts
+        [HttpGet]
+        public ActionResult<List<Account>> GetAccounts()
+        {
+            return new JsonResult(_accountService.Read());
+        }
+
         // DELETE api/accounts/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
