@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankDbApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/transactions")]
     [ApiController]
     public class TransactionsController : ControllerBase
     {
