@@ -23,5 +23,12 @@ namespace BankDbApi.Controllers
         {
             return new JsonResult(_transactionService.Read());
         }
+
+        // POST api/transactions
+        [HttpPost]
+        public ActionResult<Transaction> Post(Transaction transaction)
+        {
+            return _transactionService.Create(transaction);
+        }
     }
 }
