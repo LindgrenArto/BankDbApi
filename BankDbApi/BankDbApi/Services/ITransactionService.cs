@@ -6,7 +6,7 @@ using BankDbApi.Models;
 
 namespace BankDbApi.Services
 {
-    interface ITransactionService
+    public interface ITransactionService
     {
         Transaction CreateTransaction(Transaction transaction);
         List<Transaction> Read();

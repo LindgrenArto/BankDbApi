@@ -6,7 +6,7 @@ using BankDbApi.Models;
 
 namespace BankDbApi.Services
 {
-    interface IAccountService
+    public interface IAccountService
     {
         Account CreateAccount(Account account);
         List<Account> Read();

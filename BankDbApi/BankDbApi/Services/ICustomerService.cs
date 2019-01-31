@@ -6,7 +6,7 @@ using BankDbApi.Models;
 
 namespace BankDbApi.Services
 {
-    interface ICustomerService
+    public interface ICustomerService
     {
         Customer CreateCustomer(Customer customer);
         List<Customer> Read();
