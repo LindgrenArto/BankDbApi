@@ -3,34 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BankDbApi.Models;
+using BankDbApi.Repositories;
 
 namespace BankDbApi.Services
 {
     public class CustomerService : ICustomerService
     {
+        private readonly ICustomerRepository _customerRepository;
+
+        public CustomerService(ICustomerRepository customerRepository)
+        {
+            _customerRepository = customerRepository;
+        }
+
         public Customer CreateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            return _customerRepository.Create(customer);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _customerRepository.Delete(id);
         }
 
         public List<Customer> Read()
         {
-            throw new NotImplementedException();
+            return _customerRepository.Read();
         }
 
         public Customer Read(int id)
         {
-            throw new NotImplementedException();
+            return _customerRepository.Read(id);
         }
 
         public Customer Update(int id, Customer customer)
         {
-            throw new NotImplementedException();
+            var savedCustomer = _customerRepository.Read(id);
+            if(savedCustomer == null)
+            {
+                throw new Exception("Customer not found");
+            }
+            else
+            {
+                return _customerRepository.Update(id, customer);
+            }
         }
     }
 }

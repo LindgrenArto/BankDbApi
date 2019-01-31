@@ -3,34 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BankDbApi.Models;
+using BankDbApi.Repositories;
 
 namespace BankDbApi.Services
 {
     public class TransactionService : ITransactionService
     {
+        private readonly ITransactionRepository _transactionRepository;
+
+        public TransactionService(ITransactionRepository transactionRepository)
+        {
+            _transactionRepository = transactionRepository;
+        }
+
         public Transaction CreateTransaction(Transaction transaction)
         {
-            throw new NotImplementedException();
+            return _transactionRepository.Create(transaction);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _transactionRepository.Delete(id);
         }
 
         public List<Transaction> Read()
         {
-            throw new NotImplementedException();
+            return _transactionRepository.Read();
         }
 
         public Transaction Read(int id)
         {
-            throw new NotImplementedException();
+            return _transactionRepository.Read(id);
         }
 
         public Transaction Update(int id, Transaction transaction)
         {
-            throw new NotImplementedException();
+            var savedTransaction = _transactionRepository.Read(id);
+            if(savedTransaction == null)
+            {
+                throw new Exception("Transaction not found");
+            }
+            else
+            {
+                return _transactionRepository.Update(id, transaction);
+            }
         }
     }
 }
