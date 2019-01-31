@@ -11,6 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
+using BankDbApi.Services;
+using BankDbApi.Models;
 
 namespace BankDbApi
 {
@@ -26,9 +29,25 @@ namespace BankDbApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IBankService, BankService>();
+            services.AddScoped < ICustomerService, CustomerService>();
+            services.AddScoped<ITransactionService, TransactionService>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IBankRepository, BankRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+
+            services.AddDbContext<BankdbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("LocalPersonDb"));
+            }
+            );
+
+            services.AddMvc().AddJsonOptions(json =>
+            json.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

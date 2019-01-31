@@ -24,8 +24,8 @@ namespace BankDbApi.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=LAPTOP-K3DT06D7\\SQLEXPRESS;Initial Catalog=BankDB;Integrated Security=True");
+// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+  //              optionsBuilder.UseSqlServer("Data Source=LAPTOP-K3DT06D7\\SQLEXPRESS;Initial Catalog=BankDB;Integrated Security=True");
             }
         }
 
