@@ -40,7 +40,7 @@ namespace BankDbApi
 
             services.AddDbContext<BankdbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("LocalPersonDb"));
+                options.UseSqlServer(Configuration.GetConnectionString("AzureBankDb"));
             }
             );
 

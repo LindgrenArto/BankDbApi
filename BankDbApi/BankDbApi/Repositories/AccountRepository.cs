@@ -33,13 +33,13 @@ namespace BankDbApi.Repositories
        public List<Account> Read()
        {
 
-           return _context.Account.AsNoTracking().Include(p=>p.Transaction).ToList();
+           return _context.Account.AsNoTracking().Include(t=>t.Transaction).ToList();
 
        }
         //By id, not working
        public Account Read(string IBAN)
        {
-           return _context.Account.AsNoTracking().Include("Transaction").FirstOrDefault(p => p.IBAN == IBAN);
+           return _context.Account.AsNoTracking().Include(t => t.Transaction).FirstOrDefault(p => p.IBAN == IBAN);
        }
         // Update
        public Account Update(string IBAN, Account account)

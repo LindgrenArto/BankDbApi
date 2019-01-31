@@ -15,6 +15,7 @@ namespace BankDbApi.Models
         [Key]
         [StringLength(20)]
         public string IBAN { get; set; }
+        [Required]
         [StringLength(50)]
         public string Name { get; set; }
         public long? BankId { get; set; }
@@ -25,9 +26,9 @@ namespace BankDbApi.Models
         [ForeignKey("BankId")]
         [InverseProperty("Account")]
         public virtual Bank Bank { get; set; }
-        [ForeignKey("CustomerId")]
+        [ForeignKey("BankId")]
         [InverseProperty("Account")]
-        public virtual Customer Customer { get; set; }
+        public virtual Customer BankNavigation { get; set; }
         [InverseProperty("IBANNavigation")]
         public virtual ICollection<Transaction> Transaction { get; set; }
     }
