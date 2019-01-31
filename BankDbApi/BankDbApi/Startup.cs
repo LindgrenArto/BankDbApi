@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BankDbApi.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,7 +33,11 @@ namespace BankDbApi
             services.AddScoped<IBankService, BankService>();
             services.AddScoped < ICustomerService, CustomerService>();
             services.AddScoped<ITransactionService, TransactionService>();
-            
+            services.AddScoped<IAccountRepository, AccountRepository>();
+            services.AddScoped<IBankRepository, BankRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+
             services.AddDbContext<BankdbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("LocalPersonDb"));
@@ -41,6 +46,7 @@ namespace BankDbApi
 
             services.AddMvc().AddJsonOptions(json =>
             json.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

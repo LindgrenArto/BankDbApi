@@ -9,7 +9,7 @@ namespace BankDbApi.Models
     {
         public Bank()
         {
-            Account = new HashSet<Account>();
+            Customer = new HashSet<Customer>();
         }
 
         public long Id { get; set; }
@@ -19,6 +19,6 @@ namespace BankDbApi.Models
         public string BIC { get; set; }
 
         [InverseProperty("Bank")]
-        public virtual ICollection<Account> Account { get; set; }
+        public virtual ICollection<Customer> Customer { get; set; }
     }
 }
