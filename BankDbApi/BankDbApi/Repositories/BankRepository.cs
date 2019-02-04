@@ -27,8 +27,9 @@ namespace BankDbApi.Repositories
 
         public List<Bank> Read()
         {
-            // mitä tähän?
-            return _context.Bank.AsNoTracking().Include(c => c.Customer).ToList();
+            return _context.Bank.AsNoTracking()
+                .Include(c => c.Customer)
+                .ToList();
         }
 
         public Bank Read(int id)

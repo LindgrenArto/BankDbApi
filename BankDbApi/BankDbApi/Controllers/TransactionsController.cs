@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using BankDbApi.Models;
+using BankDbApi.Services;
 
 namespace BankDbApi.Controllers
 {
@@ -28,7 +30,7 @@ namespace BankDbApi.Controllers
         [HttpPost]
         public ActionResult<Transaction> Post(Transaction transaction)
         {
-            return _transactionService.Create(transaction);
+            return _transactionService.CreateTransaction(transaction);
         }
     }
 }

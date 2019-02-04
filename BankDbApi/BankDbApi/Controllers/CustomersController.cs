@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using BankDbApi.Models;
+using BankDbApi.Services;
 
 namespace BankDbApi.Controllers
 {
@@ -29,7 +31,7 @@ namespace BankDbApi.Controllers
         [HttpPost]
         public ActionResult<Customer> Post(Customer customer)
         {
-            return _customerService.Create(customer);
+            return _customerService.CreateCustomer(customer);
         }
 
         // PUT api/customers/5

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using BankDbApi.Models;
+using BankDbApi.Services;
 
 namespace BankDbApi.Controllers
 {
@@ -27,9 +29,9 @@ namespace BankDbApi.Controllers
 
         // DELETE api/accounts/5
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string IBAN)
         {
-            _accountService.Delete(id);
+            _accountService.Delete(IBAN);
             return new NoContentResult();
         }
     }
