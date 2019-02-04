@@ -20,6 +20,14 @@ namespace BankDbApi.Controllers
             _customerService = customerService;
         }
 
+        //by id
+        [HttpGet("{id}")]
+        public ActionResult<Customer> Get(int id)
+        {
+            return new JsonResult(_customerService.Read(id));
+        }
+
+
         // GET api/customers
         [HttpGet]
         public ActionResult<List<Customer>> GetCustomers()

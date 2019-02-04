@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace BankDbApi.Models
 {
@@ -24,6 +25,7 @@ namespace BankDbApi.Models
         public decimal? Balance { get; set; }
 
         [ForeignKey("BankId")]
+
         [InverseProperty("Account")]
         public virtual Bank Bank { get; set; }
         [ForeignKey("BankId")]

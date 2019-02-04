@@ -19,6 +19,14 @@ namespace BankDbApi.Controllers
             _transactionService = transactionService;
         }
 
+
+        //BY ID
+        [HttpGet("{id}")]
+        public ActionResult<Transaction> GetTransactions(int id)
+        {
+            return new JsonResult(_transactionService.Read(id));
+        }
+
         // GET api/transactions
         [HttpGet]
         public ActionResult<List<Transaction>> GetTransactions()

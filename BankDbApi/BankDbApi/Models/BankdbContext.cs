@@ -73,7 +73,7 @@ namespace BankDbApi.Models
 
             modelBuilder.Entity<Transaction>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                
 
                 entity.HasOne(d => d.IBANNavigation)
                     .WithMany(p => p.Transaction)

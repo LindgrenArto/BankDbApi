@@ -20,6 +20,14 @@ namespace BankDbApi.Controllers
             _accountService = accountService;
         }
 
+        //by id
+        [HttpGet("{id}")]
+        public ActionResult<Account> Get(string IBAN)
+        {
+            return new JsonResult(_accountService.Read(IBAN));
+        }
+
+
         // GET api/accounts
         [HttpGet]
         public ActionResult<List<Account>> GetAccounts()
