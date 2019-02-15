@@ -19,6 +19,12 @@ namespace BankDbApi.Controllers
         {
             _accountService = accountService;
         }
+        
+        [HttpPost]
+        public ActionResult<Account> Post(Account account)
+        {
+            return _accountService.CreateAccount(account);
+        }
 
         //by id
         [HttpGet("{id}")]
