@@ -39,7 +39,7 @@ namespace BankDbApi.Controllers
         }
 
 
-        [HttpGet("{id}")]
+        [HttpGet("iban/{iban}")]
         public ActionResult<Account> Get(string IBAN)
         {
             return new JsonResult(_accountService.Read(IBAN));
