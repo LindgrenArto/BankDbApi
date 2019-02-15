@@ -19,7 +19,7 @@ namespace BankDbApi.Controllers
         {
             _accountService = accountService;
         }
-        
+
         [HttpPost]
         public ActionResult<Account> Post(Account account)
         {
@@ -30,12 +30,19 @@ namespace BankDbApi.Controllers
         [HttpGet("{customerId}")]
         public ActionResult<Account> Get(int customerId)
         {
-            var searcher = _accountService.Read(customerId); 
-            if(searcher == null)
+            var searcher = _accountService.Read(customerId);
+            if (searcher == null)
             {
                 return new NoContentResult();
             }
             return new JsonResult(searcher);
+        }
+
+
+        [HttpGet("{id}")]
+        public ActionResult<Account> Get(string IBAN)
+        {
+            return new JsonResult(_accountService.Read(IBAN));
         }
 
 
