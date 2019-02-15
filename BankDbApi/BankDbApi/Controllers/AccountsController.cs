@@ -27,8 +27,13 @@ namespace BankDbApi.Controllers
         }
 
         //by id
+<<<<<<< .mine
         [HttpGet("{customerId}")]
         public ActionResult<Account> Get(int customerId)
+=======
+        [HttpGet("{iban}")]
+        public ActionResult<Account> Get(string IBAN)
+>>>>>>> .theirs
         {
             var searcher = _accountService.Read(customerId); 
             if(searcher == null)
@@ -47,7 +52,7 @@ namespace BankDbApi.Controllers
         }
 
         // DELETE api/accounts/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{iban}")]
         public ActionResult Delete(string IBAN)
         {
             _accountService.Delete(IBAN);
