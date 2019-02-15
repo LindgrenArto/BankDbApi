@@ -27,7 +27,7 @@ namespace BankDbApi.Controllers
         }
 
         //by id
-        [HttpGet("{id}")]
+        [HttpGet("{iban}")]
         public ActionResult<Account> Get(string IBAN)
         {
             return new JsonResult(_accountService.Read(IBAN));
@@ -42,7 +42,7 @@ namespace BankDbApi.Controllers
         }
 
         // DELETE api/accounts/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{iban}")]
         public ActionResult Delete(string IBAN)
         {
             _accountService.Delete(IBAN);
