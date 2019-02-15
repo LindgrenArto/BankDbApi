@@ -26,14 +26,9 @@ namespace BankDbApi.Controllers
             return _accountService.CreateAccount(account);
         }
 
-        //by id
-<<<<<<< .mine
+
         [HttpGet("{customerId}")]
         public ActionResult<Account> Get(int customerId)
-=======
-        [HttpGet("{iban}")]
-        public ActionResult<Account> Get(string IBAN)
->>>>>>> .theirs
         {
             var searcher = _accountService.Read(customerId); 
             if(searcher == null)
