@@ -10,6 +10,7 @@ namespace BankDbApi.Repositories
     {
         Account Create(Account account);
         List<Account> Read();
+        Account Read(int customerId);
         Account Read(string IBAN);
         Account Update(string IBAN, Account account);
         void Delete(string IBAN);

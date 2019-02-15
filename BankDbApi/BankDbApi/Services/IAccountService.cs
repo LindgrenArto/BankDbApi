@@ -10,6 +10,7 @@ namespace BankDbApi.Services
     {
         Account CreateAccount(Account account);
         List<Account> Read();
+        Account Read(int customerId);
         Account Read(string IBAN);
         Account Update(string IBAN, Account account);
         void Delete(string IBAN);

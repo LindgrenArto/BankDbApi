@@ -31,6 +31,11 @@ namespace BankDbApi.Services
             return _accountrepository.Read();
         }
 
+        public Account Read(int customerId)
+        {
+            return _accountrepository.Read(customerId);
+        }
+
         public Account Read(string IBAN)
         {
             return _accountrepository.Read(IBAN);
@@ -45,7 +50,7 @@ namespace BankDbApi.Services
             }
             else
             {
-                return _accountrepository.Update(IBAN, account);
+                return _accountrepository.Update(IBAN,account);
             }
 
         }

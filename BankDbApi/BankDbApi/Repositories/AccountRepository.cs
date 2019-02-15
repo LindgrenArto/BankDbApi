@@ -37,10 +37,15 @@ namespace BankDbApi.Repositories
 
        }
         //By id, not working
-       public Account Read(string IBAN)
+       public Account Read(int customerId)
        {
-           return _context.Account.AsNoTracking().Include(t => t.Transaction).FirstOrDefault(p => p.IBAN == IBAN);
+           return _context.Account.AsNoTracking().Include(t => t.Transaction).FirstOrDefault(p => p.CustomerId == customerId);
        }
+
+        public Account Read(string IBAN)
+        {
+            return _context.Account.AsNoTracking().Include(a => a.Transaction).FirstOrDefault(c => c.IBAN == IBAN);
+        }
         // Update
        public Account Update(string IBAN, Account account)
        {

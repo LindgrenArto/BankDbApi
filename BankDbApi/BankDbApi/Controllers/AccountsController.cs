@@ -27,10 +27,15 @@ namespace BankDbApi.Controllers
         }
 
         //by id
-        [HttpGet("{id}")]
-        public ActionResult<Account> Get(string IBAN)
+        [HttpGet("{customerId}")]
+        public ActionResult<Account> Get(int customerId)
         {
-            return new JsonResult(_accountService.Read(IBAN));
+            var searcher = _accountService.Read(customerId); 
+            if(searcher == null)
+            {
+                return new NoContentResult();
+            }
+            return new JsonResult(searcher);
         }
 
 
